@@ -1,3 +1,23 @@
 CLAUDE.md
 
 .vscode/
+
+# --- Ren'Py generated files (applies to every project at any depth) ---
+*.rpyc
+*.rpymc
+*.rpyb
+cache/
+saves/
+*.bak
+*.new
+*.old
+
+# Ren'Py error/log output
+errors.txt
+traceback.txt
+log.txt
+files.txt
+image_cache.txt
+save_dump.txt
+dialogue.tab
+dialogue.txt
