@@ -44,28 +44,27 @@ label start:
     $evidence.reset_inventory()
 
     scene outside_crime_scene
-    show nina normal1
     "May 16, 2026 12:17 PM. 13 Reaper's End."
-    show nina_smile
+    
+    show nina smile
     s "Officer, glad you could make it"
-    s "Behind me is the Peaceful Rest Senior Retirement Community."
-    show nina_thinknote1
-    s "From what I've heard it's the best place in the city for people looking to boot their parents out of the house."
+    s normal1 "Behind me is the Peaceful Rest Senior Retirement Community."
+    s thinknote1 "From what I've heard it's the best place in the city for people looking to boot their parents out of the house."
     s "At least..."
-    s "...Under normal circumstances."
-    show nina normal1
-    s "Police recieved a call around 10 this morning reporting the sudden death of a patient, Mary Sullivan, aged 75."
+    s normal1 "...Under normal circumstances."
+
+    s normal1 "Police recieved a call around 10 this morning reporting the sudden death of a patient, Mary Sullivan, aged 75."
     s "Staff claim she was in good health during her morning check up and had no underlying health conditions."
-    show nina_write
-    s "Mary was paid a visit by her daughter, Jane Sullivan, at around 9."
+
+    s write "Mary was paid a visit by her daughter, Jane Sullivan, at around 9."
     s "Typically such a visit would be supervised."
     s "However, a facility emergency led to an hour long gap from the time Jane entered the facility, left the premises, and when Mary was found deceased."
-    show nina normal1
-    s "The deceased has been transferred to the morgue and the initial state of the room has been preserved."
+
+    s normal1 "The deceased has been transferred to the morgue and the initial state of the room has been preserved."
     s "That's about all the details I have for you right now, Officer."
     s "I'm sure you don't need me to tell you what to do with the scene."
-    show nina_smile
-    s "Good luck, Officer. We're counting on you to help us solve this case."
+
+    s normal1 "Good luck, Officer. We're counting on you to help us solve this case."
     
     scene bg bedroom 
 
@@ -95,16 +94,15 @@ label review_mistakes:
     scene outside_crime_scene
     show nina normal1 at right
     s "All finished officer?"
-    show nina_write at right
-    s "Lets see how you did!"
+    
+    s write "Lets see how you did!"
 
     if len(mistake_inventory._inventory) == 0:
-        s "Oh..."
-        show nina normal1 at right
-        s "My..."
-        show nina_write at right
-        s "Goodness..."
-        show nina_smile at right
+        s normal1 "Oh..."
+       
+        s write "My..."
+        
+        s smile "Goodness..."
 
         $renpy.play("victory.mp3")
 
@@ -115,6 +113,5 @@ label review_mistakes:
     call show_results
 
     # Done was pressed: the clipboard is gone, Nina signs off, back to the main menu.
-    show nina_smile at right
-    s "Great work today!"
+    s smile "Great work today!"
     $ MainMenu(confirm=False)()
