@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Knife Fingerprint 1",
+        "image_name": "inventory-fingerprint"
+    },
+    {
+        "name": "Knife Fingerprint 2",
+        "image_name": "inventory-fingerprint"
+    },
+    {
+        "name": "Canvas Blood Sample",
+        "image_name": "inventory-splatter"
+    },
+    {
+        "name": "Stool Splatter Sample",
+        "image_name": "inventory-splatter"
+    },
+    {
+        "name": "Knife Blood Sample",
+        "image_name": "inventory-splatter"
+    },
+    {
+        "name": "Table Stain Sample",
+        "image_name": "inventory-splatter"
+    },
+    {
+        "name": "Folder",
+        "image_name": "inventory-folder"
+    },
+    {
+        "name": "Letters",
+        "image_name": "inventory-letters"
+    }
+]

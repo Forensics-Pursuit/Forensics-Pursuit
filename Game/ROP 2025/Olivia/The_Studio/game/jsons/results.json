@@ -1,0 +1,22 @@
+{
+    "mistakes_file": "jsons/mistakes.json",
+    "steps": [
+        {"category": "identify", "task": "Analyze the canvas", "label": "analyzed canvas bloodstain?"},
+        {"category": "identify", "task": "Analyze the splatter by the stool", "label": "analyzed stool splatter?"},
+        {"category": "identify", "task": "Analyze the blood on the knife", "label": "analyzed knife bloodstain?"},
+        {"category": "process", "task": "Analyze the fingerprints (2) on the knife", "label": "analyzed knife fingerprints?"},
+        {"category": "identify", "task": "Analyze the table", "label": "analyzed table stain?"},
+        {"category": "identify", "task": "Inspect the computer", "label": "inspected the computer?"},
+        {"category": "preserve", "task": "Package the folder", "label": "packaged the folder?"},
+        {"category": "preserve", "task": "Package the letters", "label": "packaged the letters?"}
+    ],
+    "spots": [
+        {"id": "canvas", "name": "Canvas", "image": "images/results/spot_canvas.png", "evidence": ["Canvas Blood Sample"]},
+        {"id": "knife", "name": "Knife", "image": "images/results/spot_knife.png", "evidence": ["Knife Blood Sample", "Knife Fingerprint 1", "Knife Fingerprint 2"]},
+        {"id": "stool", "name": "Stool", "image": "images/results/spot_stool.png", "evidence": ["Stool Splatter Sample"]},
+        {"id": "drawer", "name": "Drawer", "image": "images/results/spot_drawer.png", "evidence": ["Folder"]},
+        {"id": "laptop", "name": "Laptop", "image": "images/results/spot_laptop.png", "evidence": []},
+        {"id": "table", "name": "Table", "image": "images/results/spot_table.png", "evidence": ["Table Stain Sample"]},
+        {"id": "letters", "name": "Letters", "image": "images/results/spot_letters.png", "evidence": ["Letters"]}
+    ]
+}
