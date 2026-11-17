@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Dry Swab on Dried Stain",
+        "image_name": "toolbox-swab_pack",
+        "description": "This stain had already dried, so it needed a moistened swab. A dry swab barely picks anything up!"
+    },
+    {
+        "name": "Wet Swab on Wet Stain",
+        "image_name": "toolbox-swab_pack",
+        "description": "This stain was still wet, so a dry swab was the right choice. Adding water just dilutes the sample. Save the dilution for the lab!"
+    },
+    {
+        "name": "Test Swab Collected",
+        "image_name": "toolbox-swab_pack",
+        "description": "You packaged the swab you ran the presumptive test on. The chemicals contaminate it, so collect a fresh sample for the lab!"
+    },
+    {
+        "name": "No Presumptive Test",
+        "image_name": "toolbox-reagent",
+        "description": "You failed to run a presumptive test. For all you know, it could be paint!"
+    },
+    {
+        "name": "Wrong Blood Test Order",
+        "image_name": "toolbox-reagent",
+        "description": "You mixed up the steps of the Kastle-Meyer test. The order is ethanol, then phenolphthalein, then hydrogen peroxide."
+    },
+    {
+        "name": "Wrong Powder",
+        "image_name": "toolbox-magnetic_powder",
+        "description": "You reached for magnetic powder. It clings to a steel blade instead of the print, so it's the wrong choice for a knife."
+    },
+    {
+        "name": "Missing Evidence",
+        "image_name": "toolbox-evidence_bag",
+        "description": "You failed to collect a piece of evidence. Don't push yourself too hard; it's not like anybody's future is on the line."
+    },
+    {
+        "name": "Computer Not Inspected",
+        "image_name": "mistake-laptop",
+        "description": "You never looked through the victim's computer. Who knows what you missed?"
+    }
+]

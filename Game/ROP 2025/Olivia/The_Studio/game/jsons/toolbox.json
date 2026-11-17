@@ -1,0 +1,90 @@
+[
+    {
+        "name": "UV Light",
+        "image_name": "toolbox-uv_light",
+        "usable": true,
+        "action": "use_uv_light"
+    },
+    {
+        "name": "Magnetic Powder",
+        "image_name": "toolbox-magnetic_powder",
+        "usable": true,
+        "action": "use_magnetic_powder"
+    },
+    {
+        "name": "Silver Granular Powder",
+        "image_name": "toolbox-silver_granular_powder",
+        "usable": true,
+        "action": "use_silver_granular_powder"
+    },
+    {
+        "name": "Scalebar",
+        "image_name": "toolbox-scalebar",
+        "usable": true,
+        "action": "use_scalebar"
+    },
+    {
+        "name": "Tape",
+        "image_name": "toolbox-tape",
+        "usable": true,
+        "action": "use_tape"
+    },
+    {
+        "name": "Backing Card",
+        "image_name": "toolbox-backing_card",
+        "usable": true,
+        "action": "use_backing_card"
+    },
+    {
+        "name": "Gel Lifter",
+        "image_name": "toolbox-gel_lifter"
+    },
+    {
+        "name": "Swab Pack",
+        "image_name": "toolbox-swab_pack",
+        "usable": true,
+        "action": "use_swab_pack"
+    },
+    {
+        "name": "Ethanol",
+        "image_name": "toolbox-ethanol",
+        "usable": true,
+        "action": "use_ethanol"
+    },
+    {
+        "name": "Reagent",
+        "image_name": "toolbox-reagent",
+        "usable": true,
+        "action": "use_reagent"
+    },
+    {
+        "name": "Hydrogen Peroxide",
+        "image_name": "toolbox-hydrogen_peroxide",
+        "usable": true,
+        "action": "use_hydrogen_peroxide"
+    },
+    {
+        "name": "Evidence Bag",
+        "image_name": "toolbox-evidence_bag",
+        "usable": true,
+        "action": "use_evidence_bag"
+    },
+    {
+        "name": "Tube",
+        "image_name": "toolbox-tube",
+        "usable": true,
+        "action": "use_tube"
+    },
+    {
+        "name": "Tamper Evident Tape",
+        "image_name": "toolbox-tamper_evident_tape",
+        "usable": true,
+        "action": "use_tamper_evident_tape"
+    },
+    {
+        "name": "Gloves",
+        "image_name": "toolbox-gloves",
+        "usable": true,
+        "action": "use_gloves"
+    }
+]
