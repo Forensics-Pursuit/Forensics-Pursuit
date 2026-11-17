@@ -1,1 +1,5 @@
-This is where you should push your code! Make sure to make a subdirectory within your folder to separate each of your levels (evidence collection, lab analysis, courtroom)
+# The Studio
+
+The famous Peter Painter is found dead in his studio apartment. Can you investigate the scene and uncover the truth?
+
+[Itch page](https://oivee.itch.io/the-studio)
