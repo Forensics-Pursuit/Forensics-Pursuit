@@ -31,10 +31,6 @@ init -5 python:
         else:
             renpy.notify("You do not need Buffer ATE at this stage!")
 
-    @requires_sample    
-    def use_PBS():
-        pass
-
     @requires_sample
     def use_proteaseK():
         if curr_sample._decay_rate == 0:

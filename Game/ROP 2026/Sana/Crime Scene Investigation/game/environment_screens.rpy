@@ -120,17 +120,6 @@ screen discard_swab_button():
         hover "images/Environment Items/garbage_hover.png"
         action Confirm("Are you sure you want to throw away the swab you are currently holding?", Function(discard_swab))
 
-screen presumptive_test_button():
-    frame:
-        textbutton "Test Swab":
-            action Confirm("Run presumptive test on this swab?", Function(discard_swab))
-
-screen collect_swab_button():
-    frame:
-        textbutton "Collect Swab":
-            action Confirm("Place swab in collection tube and add to evidence?", Function(discard_swab))
-
-
 screen leave_button():
     frame:
         textbutton "Leave the Scene?":

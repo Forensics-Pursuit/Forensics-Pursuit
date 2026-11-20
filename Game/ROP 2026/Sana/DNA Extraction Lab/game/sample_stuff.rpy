@@ -3,9 +3,9 @@ init -10 python:
         """
         Function for discard sample screen
         """
-        if curr_sample.has_spin_column:
-            curr_sample.has_spin_column = False
-            curr_sample._mass_DNA_bound = 0
+        if sample.has_spin_column:
+            sample.has_spin_column = False
+            sample._mass_DNA_bound = 0
         else:
             renpy.notify("Tube has no spin column to discard!")
         renpy.hide_screen("choose_discard_type")
@@ -155,14 +155,6 @@ init -10 python:
 
     
         #TODO What can be introduced into a sample tube through adding reagents? What can be removed from doing so? 
-        def add_impurity(self, value: int) -> None:
-            """
-            Increases volume of impurities and ensures change is reflected in DNA concentration
-            """
-            #Check ensures that there is no negative mass possible
-            self._volume_impurity = max(0, self._volume_impurity + value)
-            self.calculate_concentration_DNA()
-        
         def add_solvent(self, value: int) -> None:
             """
             Increases volume of solvent and ensures change is reflected in DNA concentration

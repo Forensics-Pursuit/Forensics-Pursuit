@@ -5,18 +5,12 @@
 
 #The current screen var is referred to within the inventory function which has init of -5
 init python:
-    import json
-
     tools = load_items("jsons/toolbox.json") #Gets dictionary representing all tools contained in toolbox.json
     # Tape and Backing Card are left out of the starting toolbox (the combined "Backing Card and Tape" is used instead).
     STARTING_TOOLS = [name for name in tools if name not in ("Tape", "Backing Card")]
     
     evies = load_items("jsons/evidence.json")
 
-    mistakes = load_items("jsons/mistakes.json")
-
-    #Line below is for testing
-    #for mistake in mistakes: mistake_inventory.add_to_inventory(mistakes[mistake])
 
 
 # Holds mistakes as the player makes them (used by results.rpy). A default, so it is saved and fresh each new game.

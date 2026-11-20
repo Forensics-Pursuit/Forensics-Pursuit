@@ -1,12 +1,7 @@
 init python:
-    import json
-
     tools = load_items("jsons/toolbox.json") #Gets dictionary representing all tools contained in toolbox.json
-    #samples = load_items("jsons/evidence.json")
     for tool in tools: #Loops through all keys and displays tool to inventory
         toolbox.add_to_inventory(tools[tool])
-    
-    toolbox.delete_from_inventory("PBS")
     
     
     evidence.reset_inventory()
@@ -113,42 +108,5 @@ screen extraction_lab():
         hotspot (742, 399, 224, 203) action Function(use_centrifuge)
         hotspot (996, 336, 329, 297) action Function(use_vortex_and_mini_centrifuge)
         hotspot (1357, 516, 199, 166) action Function(use_incubater)
-
-
-screen incubator():
-    imagebutton:
-        idle "centrifuge_button_idle"
-        hover "centrifuge_button_hover"
-        action Function(use_incubater)
-
-screen centrifuge():
-    imagebutton:
-        idle "centrifuge_button_idle"
-        hover "centrifuge_button_hover"
-        action Function(use_centrifuge)
-
-
-screen vortex_and_mini_centrifuge():
-    imagebutton:
-        idle "centrifuge_button_idle"
-        hover "centrifuge_button_hover"
-        action Function(use_vortex_and_mini_centrifuge)
-
-
-
-    
-
-
-
-
-    
-    
-
-         
-        
-
-
-
-
 
 

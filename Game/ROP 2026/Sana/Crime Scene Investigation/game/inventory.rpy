@@ -74,46 +74,6 @@ init -10 python:
             self.action = action
 
 
-        def set_name(self, name: str) -> None:
-            self.name = name
-
-
-        def set_description(self, description: str) -> None:
-            self.description = description
-
-
-        def set_image_name(self, image_name: str) -> None:
-            self.image_name = image_name
-
-
-        def set_usable(self, usable: bool) -> None:
-            self.usable = usable
-
-
-        def set_action(self, action: Callable) -> None:
-            self.action = action
-
-
-    class Evidence(Item):
-        """
-        An extension of the Item class for an evidence item. This is not required, nor
-        is it explicitly used in the default inventory code. If by any chance,
-        you need to explicitly keep track of an evidence item's collection status, you
-        may use this class. However, you could also just add and remove from your
-        evidence inventory as necessary to do that as well.
-        """
-        collected: bool
-
-
-        def __init__(self, name: str, description: str, image_name: str, usable: bool = False, action: Callable = None, collected: bool = False) -> None:
-            super().__init__(name, description, image_name, usable, action)
-            self.collected = collected
-
-
-        def set_collected(self, collected: bool) -> None:
-            self.collected = collected
-
-
     class Inventory:
         """
         This class is responsible for instantiating the toolbox and evidence inventories
@@ -371,48 +331,6 @@ screen inventory_slot(item=None):
                         action Function(view_item, name=name, image_name=image_name, description=description)
 
                 # TODO: expand
-
-
-screen mistake_slot(item=None):
-    # This screen is used by the inventory screen to create slots for
-    # each item. You never need to call this explicitly.
-
-    default show_overlay = False
-    default show_info = False
-
-    $ name = item.name if item != None else "No name provided"
-    $ image_name = item.image_name if item != None else ""
-    $ description = item.description if item != None else "No description provided"
-    $ usable = item.usable if item != None else False
-    $ item_action = item.action if item != None else None
-
-    fixed:
-        fit_first True
-        xysize (130, 130)
-
-        mousearea:
-            area (0, 0, 130, 130)
-            hovered SetLocalVariable("show_overlay", True)
-            unhovered SetLocalVariable("show_overlay", False)
-
-        add "inventory-slot"
-
-        if image_name != "":
-            add Transform(image_name, zoom=0.45, xoffset=20, yoffset=20)
-
-            if show_overlay:
-                add Transform("inventory-item-overlay", yzoom=0.67, xzoom=0.6)
-
-                hbox:
-                    xoffset 55
-                    yoffset 55
-
-                    imagebutton:
-                        auto "view-inventory-item-%s" at Transform(zoom=0.47)
-                        action Function(view_item, name=name, image_name=image_name, description=description)
-
-                # TODO: expand
-
 
 
 screen inventory_info(name="", image_name="", description=""):
