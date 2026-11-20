@@ -1,47 +1,5 @@
 init -5 python:
-    """
-    I have made the decision not to include anything glove related. 
-    
-    The most frequently repeated mistake in playtesting was people forgetting to put gloves on or to change gloves between evidence items. 
-    Initially I felt that this was an indication that testing for proper gloving was essential. In my mind it is simlar to taking photographs of 
-    everything: an unglamorous step that is integral to ensuring that the integrity of evidence and your credibility as an investigator is maintained.
-
-    With that said, I feel that there is no proper way to include gloving within the game as gloves are entirely tactile. By the very nature of video games,
-    there is a diminishing of touch. Players cannot feel their hands getting sweaty in a pair of gloves or the sensation of grabbing an object and rendering
-    the gloves unclean. In Ren'py especially, there is no body that the player can look at and they exist as naught but a crime solving ghostly apparition. 
-
-    The issue can be simplified as a single implication: if you touch an item without gloves then you have contaminated it and made a mistake in the crime
-    scene investigation. Given that the feeling of touch essentially does not exist within the game, this statement will always be vaccuously true rendering
-    a gloving mechanic useless.
-
-    There is likely a way to invoke the missing tactile sensation but I feel that Ren'py is poorly suited for such a task and that I lack the visual design
-    elements to sucessfully execute such a task.
-
-
-    from enum import Enum
-
-    class GloveStatus(Enum):
-        CLEAN = 1
-        GLOVELESS = 0
-        DIRTY_MAIN = -1
-        DIRTY_ANGEL_HEAD = -2
-        DIRTY_ANGEL_STATUES = -3
-    
-    def use_gloves():
-        global clean_gloves
-        renpy.notify("You have put a clean pair of gloves on.")
-        clean_gloves = GloveStatus.CLEAN.value
-        renpy.play("gloves.mp3")
-    
-    def glove_check():
-        global clean_gloves
-        if clean_gloves == -1:
-            mistake_inventory.add_to_inventory(mistakes["Dirty Gloves"])
-        elif clean_gloves == 0:
-            mistake_inventory.add_to_inventory(mistakes["No Gloves"])
-        else:
-            clean_gloves = -1
-    """
+    # The glove mechanic was removed on purpose. The reasoning and the old code are in notes.md.
 
     import random
 

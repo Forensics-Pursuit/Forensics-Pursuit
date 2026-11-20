@@ -315,18 +315,3 @@ screen tube_concentration_bar:
             bar_resizing True
             value AnimatedValue(curr_sample._concentration_DNA, 100, 0.7)
             range 100 
-
-    """
-    #Extra Bars for testing stuff
-    vbar at right:
-        xoffset -300
-        bar_resizing True
-        value AnimatedValue(sample._volume_solvent, 2000, 0.7)
-        range 100 
-    
-    vbar at right:
-        xoffset -500
-        bar_resizing True
-        value AnimatedValue(sample._volume_impurity, 2000, 0.7)
-        range 100 
-    """

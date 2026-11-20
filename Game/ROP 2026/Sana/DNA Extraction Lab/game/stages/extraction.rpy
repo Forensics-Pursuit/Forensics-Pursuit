@@ -24,16 +24,6 @@ init python:
 
     #Tracks which part of the tube is being transferred: "solution", "spin_column", or None when not transferring.
     transfer_mode = None
-    """
-    #Function(s) for adjusting current sample
-    def discard_sample(sample):
-        global curr_sample
-        item = evidence.get_item(sample.label)
-        if item is not None:
-            evidence.delete_from_inventory(item)
-        if curr_sample is sample:
-            curr_sample = None
-    """
 
 
 define s = Character(name=("Nina"), image="nina")
@@ -117,7 +107,6 @@ screen test():
 
 screen extraction_lab():
     imagemap:
-        #ground "bg bedroom_idle.png"
         idle "bio_station"
         hover "bio_station_hover"
 
