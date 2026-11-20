@@ -40,7 +40,7 @@ screen custom_overlay():
         background "#000000"  # Adds a black background (or use an image)
 
 
-screen inventory_button:
+screen inventory_button():
     zorder 5
     
     hbox:
@@ -55,7 +55,7 @@ screen inventory_button:
 
 
 # TODO: Update this case description to match yours. This is what will show when the player clicks the "Cases" button on the top-left.
-screen case_description:
+screen case_description():
     add Solid("#000000a3")
     zorder 3
     modal True
@@ -70,7 +70,7 @@ screen case_description:
     image "[case_image]" align (0.3, 0.4) at Transform(zoom=2)
 
 
-screen reminder:
+screen reminder():
     hbox:
         xpos 0.8 ypos 0.615
         imagebutton:
@@ -170,19 +170,6 @@ screen nameyourself():
             sensitive (player_fname.strip() and player_lname.strip() and player_prefix.strip())
 
 
-screen return_to_case_selection():
-    hbox:
-        xpos 0.5
-        ypos 0.8
-        xanchor 0.5
-        yanchor 0.5
-
-        button:
-            style "selection_button"
-            text "Return to Case Selection" style "selection_button_text"
-            action [SetVariable("switch_cases", True), Jump("case_selection_menu")]
-
-
 # TODO: Update the title of the case to match yours (line 215).
 screen specialty_exploration_screen(specialty):    
     # Find the matching specialty data from JSON
@@ -258,7 +245,7 @@ screen specialty_exploration_screen(specialty):
             text "Choose this Specialty" style "selection_button_text"
 
 
-screen evaluation_screen:
+screen evaluation_screen():
     modal True  
     frame:
         xalign 0.5
@@ -300,7 +287,7 @@ screen evaluation_screen:
             action Jump("ending_0")
 
 
-screen credits_lol:
+screen credits_lol():
     add "thanks-for-playing.png":
         xalign 0.5
         yalign 0.5

@@ -1,6 +1,4 @@
 ﻿init python:
-    import json
-
     tools = load_items("jsons/toolbox.json")
     toolbox.add_to_inventory(tools["Backing Card"])
     # toolbox.add_to_inventory(tools["Scalebar"])

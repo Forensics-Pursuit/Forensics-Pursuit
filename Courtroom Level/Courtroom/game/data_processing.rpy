@@ -14,14 +14,6 @@ init python:
             self.description = description
             self.truth_base = truth_base
 
-        def display(self) -> None:
-            print("Evidence:")
-            print("  Name:", self.name)
-            print("  Image:", self.image)
-            print("  Description:", self.description)
-            print("  Truth Base:")
-            for item in self.truth_base:
-                print("   -", item)
 
     class Specialty:
         name: str
@@ -33,15 +25,6 @@ init python:
             self.case_points = case_points
             self.evidence = evidence
     
-        def display(self) -> None:
-            print("Specialty:", self.name)
-            print("Case Points:")
-            for point in self.case_points:
-                print(" -", point)
-            print("Evidence List:")
-            for ev in self.evidence:
-                ev.display()
-                print("")
     
 
     def get_specialty(specialty_name: str) -> Specialty:

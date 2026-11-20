@@ -74,46 +74,6 @@ init -10 python:
             self.action = action
 
 
-        def set_name(self, name: str) -> None:
-            self.name = name
-
-
-        def set_description(self, description: str) -> None:
-            self.description = description
-
-
-        def set_image_name(self, image_name: str) -> None:
-            self.image_name = image_name
-
-
-        def set_usable(self, usable: bool) -> None:
-            self.usable = usable
-
-
-        def set_action(self, action: Callable) -> None:
-            self.action = action
-
-
-    class Evidence(Item):
-        """
-        An extension of the Item class for an evidence item. This is not required, nor
-        is it explicitly used in the default inventory code. If by any chance,
-        you need to explicitly keep track of an evidence item's collection status, you 
-        may use this class. However, you could also just add and remove from your
-        evidence inventory as necessary to do that as well.
-        """
-        collected: bool
-
-
-        def __init__(self, name: str, description: str, image_name: str, usable: bool = False, action: Callable = None, collected: bool = False) -> None:
-            super().__init__(name, description, image_name, usable, action)
-            self.collected = collected
-
-
-        def set_collected(self, collected: bool) -> None:
-            self.collected = collected
-
-
     class Inventory:
         """
         This class is responsible for instantiating the toolbox and evidence inventories

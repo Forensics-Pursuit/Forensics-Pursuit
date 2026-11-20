@@ -18,8 +18,6 @@ default voir_dire_retries = 0
 default ai_question = ""
 default user_answer = ""
 default qualification_score = 0
-$ persistent.case_choice = None
-$ persistent.specialty = None
 
 label start:
     scene bg spec
@@ -92,7 +90,7 @@ label start:
     s "Evidence suggests that Bartlett arrived under the mistaken impression that Ezra and Ana had contacted him for his services and demanded compensation when asked to leave."
     s "A physical confrontation ensued, during which Ezra was rendered unconscious."
     s "It is estimated that Ana passed away sometime after Ezra lost consciousness."
-    s "Partygoers, unaware of the events that had taken place, contacted emergency sercices as soon as they realized Ana was not breathing."
+    s "Partygoers, unaware of the events that had taken place, contacted emergency services as soon as they realized Ana was not breathing."
 
     s "Now that you are familiar with the case, let's get you ready to testify as an expert witness!"
     s "Would you like me to go through the tutorial? Or should we get straight to selecting your preferences?"
@@ -176,7 +174,7 @@ label tutorial_lex_diff:
     s "If you choose defense, Lex will act as the defense attorney. This is the harder option."
     hide steve normal2
     show steve normal
-    s "A defense lawyer's priority is to advocate for their client, the accused, within the bounds of the law to test the strength of the crown's case." 
+    s "A defense lawyer's priority is to advocate for their client, the accused, within the bounds of the law to test the strength of the Crown's case." 
     s "They may challenge you and your findings, perhaps even working to discredit your testimony." 
     s "Expect Lex to challenge you with leading or loaded questions, and other cross-examination techniques designed to undermine your credibility." 
     s "You'll need to stay composed, justify your conclusions, and ensure your testimony remains admissible."
@@ -185,7 +183,7 @@ label tutorial_lex_diff:
     s "Choose wisely! Your decision will shape the difficulty of your examination."
     hide steve happy
     show steve paper
-    s "Once you've made your selection, the court room awaits! I'll be seeing you after your trial. Good luck!"
+    s "Once you've made your selection, the courtroom awaits! I'll be seeing you after your trial. Good luck!"
     jump difficulty_selection 
 
 
@@ -358,7 +356,7 @@ label evaluate_voir_dire_result:
         hide lex normal1
         hide navya pass
         show lex normal1
-        l "Thank you, your honour. Let's proceed."
+        l "Thank you, Your Honour. Let's proceed."
         hide lex normal1
         jump generate_first_question
     else:
@@ -432,7 +430,7 @@ label interview_loop:
         if "unintelligible response" in ai_response:
             $ unintelligible_count += 1
             if unintelligible_count >= 3:
-                l "I'm sorry, this examination cannot continue due to the repeated unintelligible responses. Your honour, I would like to move to disqualify the witness."
+                l "I'm sorry, this examination cannot continue due to the repeated unintelligible responses. Your Honour, I would like to move to disqualify the witness."
                 jump game_over
             elif "examination cannot continue" in ai_response.lower():
                 jump game_over
@@ -457,13 +455,6 @@ label game_over:
         "Quit":
             $ renpy.quit()
 
-python:
-    if LEX_DIFFICULTY == "prosecution":
-        unplayed_difficulty = "defense"
-    elif LEX_DIFFICULTY == "defense":
-        unplayed_difficulty = "prosecution"
-    else:
-        unplayed_difficulty = "error"
 
 
 label interview_end:
@@ -472,7 +463,7 @@ label interview_end:
     l "Thank you for your time, [player_prefix] [player_lname]."
     hide lex normal1
     show navya pass
-    j "Thank you, Lex. [player_prefix] [player_fname] [player_lname], you may leave the court room. You will receive your evaluation outside with your supervisor."
+    j "Thank you, Lex. [player_prefix] [player_fname] [player_lname], you may leave the courtroom. You will receive your evaluation outside with your supervisor."
     hide navya pass
     hide lex normal1
     python:
@@ -498,9 +489,6 @@ label interview_end:
             renpy.store.eval_comments = evaluation_response
             renpy.store.score = score  
 
-            print(f"EVAL COMMENTS:\n{renpy.store.eval_comments}")
-            print(f"SCORE:\n{renpy.store.score}")
-
         except Exception as e:
             renpy.store.eval_comments = f"Error: {str(e)}"
             renpy.store.score = 0
@@ -510,7 +498,7 @@ label interview_end:
     s "Welcome back, [player_fname]! In just a second, Lex and the Judge will return with any feedback they have for you."
     hide steve happy
     show steve normal2
-    s "After you receive your feedback, I encourage you to testify again for the [unplayed_difficulty] to get the full court room experience."
+    s "After you receive your feedback, I encourage you to testify again for the [unplayed_difficulty] to get the full courtroom experience."
     hide steve normal2
     show steve normal
     s "You can also choose a whole new case and specialty and start again! The choice is yours!"

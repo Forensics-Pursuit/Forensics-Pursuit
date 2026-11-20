@@ -106,33 +106,6 @@
         return processed
 
 
-    def divide_response_v2(ai_response: str) -> List[str]:
-        global TEXT_LIMIT
-        position = 0
-        responses = []
-        while position < len(ai_response):
-            index = find_next_period(ai_response, position)
-            if index == -1:
-                responses.append(ai_response[position:])
-                break
-
-            chunk = ai_response[position: index + 1]
-            if len(chunk) > TEXT_LIMIT:
-                responses.append(ai_response[position: position + TEXT_LIMIT])
-                position += TEXT_LIMIT
-            else:
-                responses.append(chunk)
-                position = index + 1
-        return responses
-
-
-    def find_next_period(text: str, index: int) -> int:
-        for i in range(index, len(text)):
-            if text[i] in "$":
-                return i
-        return -1
-
-
     def say_responses(responses: List[str]) -> None:
         for response in responses:
             renpy.say(l, response)
@@ -154,35 +127,6 @@
             return match.group(1).strip()  # Return the last question found
         else:
             return ai_evaluation.strip()
-
-
-    voir_dire_feedback = {
-        "education": {
-            "good": "Your educational background is well-suited for this case. Providing details about your degrees and certifications is important.",
-            "clarification": "To strengthen your qualifications, can you specify the degrees or certifications that are most relevant to this case?",
-            "poor": "Your educational background needs further clarification. Focus on relevant degrees, certifications, and accreditations."
-        },
-        "experience": {
-            "good": "Your professional experience demonstrates your expertise. Be sure to mention the number of years and specific relevant projects.",
-            "clarification": "Can you elaborate on the specific projects or cases where you applied your expertise in a similar context?",
-            "poor": "Your experience is not clearly established. Highlight the number of years of experience and the types of projects or cases you've worked on."
-        },
-        "skills": {
-            "good": "Your technical skills appear appropriate. Mentioning specific methodologies and techniques bolsters your qualification.",
-            "clarification": "Could you provide examples of how you've applied specific methodologies or techniques in your field?",
-            "poor": "Your technical skills need more explanation. Be sure to name the methodologies and techniques you're proficient in."
-        },
-        "currency": {
-            "good": "Your continuing education is up to par. Continuing education credits, conferences, and journals are great to mention",
-            "clarification": "Can you name any recent conferences or journals you have used to keep your knowledge up to date.",
-            "poor": "Your current knowledge needs updating. Consider conferences, journald and taking credits in continuing education"
-        },
-        "conflicts": {
-            "good": "You have maintained objectivity. Detailing your lack of bias and interests maintains credibility",
-            "clarification": "Be sure to highlight that you have maintained objectivty and have no biases in your expertise",
-            "poor": "Objectivity needs clarification. Emphasize no bias, interests or relationships"
-        }
-    }
 
 
     grading_criteria = {

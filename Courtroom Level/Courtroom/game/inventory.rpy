@@ -1,22 +1,20 @@
-"""
-Inventory Function File ------------------------------------------------
-
-This file contains all of the functions required for the inventory system (including the evidence box and toolbar menus), as well as 
-the screens that are required for the game. All of the functions and screens were given descriptions and detailed comments describing
-their functionalities. 
-
-For explanations on how to modify/configure this file for your own level, please reference the inventory guide I sent on Teams!
-
-For more detailed explanations about the code, feel free to check out this tutorial series:
-https://www.youtube.com/watch?v=YHbTHSYvQYk&list=PL7wM8yQ325u-l6A-i3TAcbb8V_PYnYB18 which is where I got most of my code from.
-
-GENERAL NOTES:
-    - The term, "inventory" is used to represent the evidence box. So functions prefixed with "inventory" refer to the evidence hotbar.
-    This name will be changed in the final product.
-    - Some functions will be labelled as unfinished if they aren't complete. You may ignore those until further notice/updates.
-    - Only change the parts of the code as indicated on the inventory guide.
-    - If you find any bugs in this code, please let me (Vivian) know!
-"""
+# Inventory Function File ------------------------------------------------
+#
+# This file contains all of the functions required for the inventory system (including the evidence box and toolbar menus), as well as
+# the screens that are required for the game. All of the functions and screens were given descriptions and detailed comments describing
+# their functionalities.
+#
+# For explanations on how to modify/configure this file for your own level, please reference the inventory guide I sent on Teams!
+#
+# For more detailed explanations about the code, feel free to check out this tutorial series:
+# https://www.youtube.com/watch?v=YHbTHSYvQYk&list=PL7wM8yQ325u-l6A-i3TAcbb8V_PYnYB18 which is where I got most of my code from.
+#
+# GENERAL NOTES:
+#     - The term, "inventory" is used to represent the evidence box. So functions prefixed with "inventory" refer to the evidence hotbar.
+#     This name will be changed in the final product.
+#     - Some functions will be labelled as unfinished if they aren't complete. You may ignore those until further notice/updates.
+#     - Only change the parts of the code as indicated on the inventory guide.
+#     - If you find any bugs in this code, please let me (Vivian) know!
 
 init python:    
     evidence = {
@@ -28,7 +26,7 @@ init python:
         "Case_A_Chemistry_2": "Microscopic analysis of Ana Konzaki's head wound reveals small embedded traces of metal, suggesting the object that caused the injury had a metal striking surface.",
         "Case_A_Psychology_1": "Edward Bartlett's criminal history indicates repeated occurrences of violence. His most recent charge was 6 months prior for assaulting an individual during a bar altercation. Following the latest charge, Bartlett was sentenced to probation with mandatory anger management counseling, indicating ongoing concerns about his violent behaviour.",
         "Case_A_Psychology_2": "Case A, Psychology, Evidence 2 Description",
-        "Case_A_Identification_1": "Fingerprints on the collected metal water bottle's sticker, developed using the DFO method. The print seems consistent with the right index finger on Edward Bartlett's elimination set.n",
+        "Case_A_Identification_1": "Fingerprints on the collected metal water bottle's sticker, developed using the DFO method. The print seems consistent with the right index finger on Edward Bartlett's elimination set.",
         "Case_A_Identification_2": "A partial shoeprint found in a pool of blood, leading away from the crime scene. It was identified as a men's size 10 Timberland boot, a type of shoe which Edward Bartlett has been seen wearing before.",
         "Case_B_Anthropology_1": "Jacob's autopsy revealed bruising on his neck, but the hyoid bone was not fractured. Small hemorrhages (petechiae) were found in his eyes and face",
         "Case_B_Anthropology_2": "Based on bloating, skin slippage, and insect activity, it is estimated that he had been dead for approximately 36-48 hours before being discovered.",
@@ -949,17 +947,15 @@ init python:
 
 # INVENTORY SCREENS ------------------------- (might move to custom_screens)
 
-"""
-Sets up inventory screen when player enters.
-"""
-screen full_inventory:
+# Sets up inventory screen when player enters.
+screen full_inventory():
     zorder 1
     image "UI/inv-icon-bg.png" xpos 0.014 ypos -0.03 at half_size
     imagebutton auto "UI/inventory-icon-%s.png" action If(renpy.get_screen("inventory") == None, true= [Show("inventory"), Hide("toolbox"), Hide("toolboxpop")], false= [Hide("inventory"), Hide("toolboxpop")]) xpos 0.087 ypos 0.02 at half_size
     imagebutton auto "UI/tool-inventory-icon-%s.png" action If(renpy.get_screen("toolbox") == None, true= [Show("toolbox"), Hide("inventory")], false= [Hide("toolbox"), Hide("toolboxpop")]) xpos 0.037 ypos 0.02 at half_size
 
 # evidence:
-screen inventory:
+screen inventory():
     modal True
     add Solid("#000000a3")
     zorder 3
@@ -970,7 +966,7 @@ screen inventory:
     add inventory_SM
 
 # toolbox:
-screen toolbox:
+screen toolbox():
     zorder 3
     image "UI/tools-bg.png" xpos 0.02 ypos 0.09 at half_size
     image "UI/inventory-slots.png" xpos 0.047 ypos 0.25 at half_size
@@ -979,7 +975,7 @@ screen toolbox:
     add toolbox_SM
 
 # toolbox pop-up:
-screen toolboxpop:
+screen toolboxpop():
     zorder 3
     image "UI/toolboxpop-bg.png" xpos 0.13 ypos 0.28 at half_size
     image "UI/toolboxpop-slots.png" xpos 0.1415 ypos 0.41 at half_size
@@ -1022,11 +1018,9 @@ screen toolboxPopItemMenu(item):
         imagebutton auto "UI/view-inventory-item-%s.png" align (0.0, 0.5) at half_size action [Show("inspectItem", items = [item.type]), Hide("toolboxPopItemMenu")]
         imagebutton auto "UI/use-inventory-item-%s.png" align (1.0, 0.5) at half_size action [Function(startDrag3, item = item), Hide("toolboxPopItemMenu")]
 
-"""
-Controls item inspection (when player clicks info button on an item for closer inspection).
-
-Takes in a list of items.
-"""
+# Controls item inspection (when player clicks info button on an item for closer inspection).
+#
+# Takes in a list of items.
 screen inspectItem(items):
     # modal True
     zorder 4
@@ -1079,9 +1073,7 @@ screen inspectItem(items):
 
             
 
-"""
-Displays dialogue box.
-"""
+# Displays dialogue box.
 screen characterSay(who = None, what = None, jump_to = None):
     modal True
     zorder 6
@@ -1113,7 +1105,7 @@ screen characterSay(who = None, what = None, jump_to = None):
     if not renpy.variant("small"):
         add SideImage() xalign 0.0 yalign 1.0
 
-screen scene1:
+screen scene1():
     add environment_SM
 
 # make sure to add this add the bottom of the setup labels to ensure that images are properly sized
