@@ -109,8 +109,10 @@ label end:
     
    
 screen test():
-    key "l" action Function(lambda: renpy.notify(f"{last_used_item}"))
-    key "c" action Function(lambda: renpy.notify(f"{vars(curr_sample)}"))
+    # Debug keys, only active when running from the Ren'Py SDK (config.developer).
+    if config.developer:
+        key "l" action Function(lambda: renpy.notify(f"{last_used_item}"))
+        key "c" action Function(lambda: renpy.notify(f"{vars(curr_sample)}"))
 
 
 screen extraction_lab():

@@ -262,8 +262,6 @@ init -10 python:
         return items
 
 
-    toolbox = Inventory()
-    evidence = Inventory()
 
 
 screen inventory():
@@ -452,4 +450,7 @@ screen open_inv():
         action [ToggleScreen("open_inv"), ToggleScreen("inventory")]
 
 
+# The inventories are game state, so they use default: Ren'Py saves them and resets them for each new game.
+default toolbox = Inventory()
+default evidence = Inventory()
 default selected_inventory = toolbox

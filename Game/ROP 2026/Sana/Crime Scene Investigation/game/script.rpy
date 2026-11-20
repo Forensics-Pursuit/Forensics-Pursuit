@@ -8,20 +8,19 @@ init python:
     import json
 
     tools = load_items("jsons/toolbox.json") #Gets dictionary representing all tools contained in toolbox.json
-    for tool in tools: #Loops through all keys and displays tool to inventory
-        toolbox.add_to_inventory(tools[tool])
-
-    toolbox.delete_from_inventory(tools["Tape"])
-    toolbox.delete_from_inventory(tools["Backing Card"])
+    # Tape and Backing Card are left out of the starting toolbox (the combined "Backing Card and Tape" is used instead).
+    STARTING_TOOLS = [name for name in tools if name not in ("Tape", "Backing Card")]
     
     evies = load_items("jsons/evidence.json")
 
-    #This is the invenory that will hold mistakes as the player makes them.
-    mistake_inventory = Inventory()
     mistakes = load_items("jsons/mistakes.json")
 
     #Line below is for testing
     #for mistake in mistakes: mistake_inventory.add_to_inventory(mistakes[mistake])
+
+
+# Holds mistakes as the player makes them (used by results.rpy). A default, so it is saved and fresh each new game.
+default mistake_inventory = Inventory()
 
 
 define config.mouse_displayable = MouseDisplayable(
@@ -40,8 +39,8 @@ define s = Character(name=("Nina"), image="nina")
 
 
 label start:
-    $mistake_inventory.reset_inventory()
-    $evidence.reset_inventory()
+    # evidence and mistake_inventory start empty because they are defaults; the toolbox is filled here.
+    $ toolbox.set_inventory([tools[name] for name in STARTING_TOOLS])
 
     scene outside_crime_scene
     "May 16, 2026 12:17 PM. 13 Reaper's End."

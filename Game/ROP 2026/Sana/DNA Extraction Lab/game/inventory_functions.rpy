@@ -74,14 +74,14 @@ init -5 python:
     def use_proteaseK():
         if curr_sample._decay_rate == 0:
             renpy.notify("There are no more DNases that need digesting!")
-        if add_solvent(20):
+        elif add_solvent(20):
             curr_sample.add_proteaseK()
 
     @requires_sample
     def use_bufferAL():
         if curr_sample._mass_DNA == 0:
             renpy.notify("You have lysed all cells within this tube!")
-        if add_solvent(400):
+        elif add_solvent(400):
             curr_sample.free_DNA(1)
 
     @requires_sample
@@ -119,13 +119,14 @@ init -5 python:
             return True
         
     def use_2mlTube():
-        global total_tubes
+        global total_tubes, curr_sample
         total_tubes += 1
         num_tubes = total_tubes
         new_tube_name = renpy.invoke_in_new_context(renpy.input, default=f'Sample Tube {num_tubes}', length=20, prompt="Label your tube")
 
-        evidence.add_to_inventory(Instance_Item(new_tube_name, image_name="balance_tube_idle", usable=True, action=use_sample, instance=Tube_2ml(new_tube_name)))
-        curr_sample = evidence.get_item(new_tube_name).instance
+        new_tube = Tube_2ml(new_tube_name)
+        evidence.add_to_inventory(Instance_Item(new_tube_name, image_name="balance_tube_idle", usable=True, action=use_sample, instance=new_tube))
+        curr_sample = new_tube
 
     @requires_sample
     def use_spinColumn():
@@ -152,7 +153,6 @@ init -5 python:
         #if curr_sample is None:  (Replaced by decorator)
         #renpy.notify("Select a sample first.")
         #return
-        print(curr_sample.label)
 
         if not curr_sample.has_spin_column:
             renpy.notify("You do not need to centrifuge. If you want to homogenize the mixture use the mini centrifuge and vortex machine!")

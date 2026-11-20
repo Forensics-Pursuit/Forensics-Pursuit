@@ -152,7 +152,6 @@ init -10 python:
             else:
                 #Ensures concentration is a precentage (May need to change later)
                 self._concentration_DNA = round( ( (self._mass_DNA_free / volume_total) * 100) )
-            print(self._concentration_DNA)
 
     
         #TODO What can be introduced into a sample tube through adding reagents? What can be removed from doing so? 

@@ -1,8 +1,5 @@
 init python: 
     class Scene:
-        #Hardcoded but okay because we always start from main bedroom
-        current = "bedroom_main"
-
         def __init__(self, name: str, background: str = None, states: dict = {}):
             self.name = name
             self.background = background
@@ -18,9 +15,6 @@ init python:
         def get_state(self, key, default=False):
             return self.states.get(key, default)
 
-        @staticmethod
-        def set_current(scene_name):
-            Scene.current = scene_name
     
 
 default scenes = {
@@ -77,6 +71,9 @@ while swabbing is on going. Thus, we must have a swabbing variable.
 default swabbing = False
 default testing = False
 
+# The scene the player is looking at. Saved with the game, so loading returns to the same view.
+default current_scene = "bedroom_main"
+
 
 screen main():
     """
@@ -91,7 +88,7 @@ screen main():
 
     I went back to the CSC207 notes to try understanding what kind of design pattern this was. If I am not mistaken, this screen will essentially be the 
     view of the clean architecture engine. The ViewModel of my program would then be the Scene class. By definition a view model stores the information
-    that the view must acess to display something. In this case, that information would be the variable Scene.current.
+    that the view must acess to display something. In this case, that information would be the variable current_scene.
     
     I should mention that the Scene class does violate the SRP as it is also a member of the entity layer and stores all temporary information on player
     progress trough the level, Additionally, the swabbing variable should ideally be an attribute of the view model class as it is also used to determine what is 
@@ -99,8 +96,8 @@ screen main():
     refactoring to address these issues :)
     """
     #The nice thing about this single line is that I never need to explicitly show or hid an environment scene again. 
-    #All that is required is a change to Scene.current!
-    use expression Scene.current
+    #All that is required is a change to current_scene!
+    use expression current_scene
 
     
     """
@@ -122,9 +119,9 @@ screen main():
             use presumptive_testing
         elif swabbing:
             use discard_swab_button
-        elif Scene.current == "bedroom_main":
+        elif current_scene == "bedroom_main":
             use leave_button
-        elif Scene.current != "bedroom_main":
+        elif current_scene != "bedroom_main":
             use back_button
         
 
@@ -134,9 +131,9 @@ screen bedroom_main():
         idle scenes["bedroom_main"].background
         hover "bg bedroom_hover"
 
-        hotspot (1080, 241, 79, 78) action Function(Scene.set_current,"angel_statues")
+        hotspot (1080, 241, 79, 78) action SetVariable("current_scene", "angel_statues")
         hotspot (382, 655, 282, 180) action If(swabbing, Function(swab_something), Notify("A dried blood pool"))
-        hotspot (1335, 874, 20, 16) action [Function(Scene.set_current,"angel_head"), Function(scenes["angel_head"].set_state, "examined")]
+        hotspot (1335, 874, 20, 16) action [SetVariable("current_scene", "angel_head"), Function(scenes["angel_head"].set_state, "examined")]
 
 screen angel_statues():
     imagemap:
@@ -155,8 +152,8 @@ screen back_button():
     imagebutton:
         idle "back_button"
         hover "back_button_hover"
-        #Horrendous hardcode for the Scene.set_current but we do not have to worry about scalability :)
-        action Function(Scene.set_current,"bedroom_main")
+        #Horrendous hardcode for the scene name but we do not have to worry about scalability :)
+        action SetVariable("current_scene", "bedroom_main")
 
 screen discard_swab_button():
     imagebutton:
@@ -226,12 +223,13 @@ screen environment_tester():
     #If you want to ensure that a function does change what you want it to...USE A KEY LIKE BELOW.
     zorder 100
     
-    key "d" action Function(lambda: renpy.notify(f"{scenes[Scene.current].get_state('dusted')}"))
-    key "g" action Function(lambda: renpy.notify(f"{clean_gloves}"))
-    key "s" action Function(lambda: renpy.notify(f"{scenes[Scene.current].states}"))
-    key "m" action Function(lambda: renpy.notify(f"{mistake_inventory._inventory}"))
-    key "b" action Function(lambda: renpy.notify(f"{swabbing}"))
-    key "t" action Function(lambda: renpy.notify(f"{testing}"))
+    # Debug keys, only active when running from the Ren'Py SDK (config.developer).
+    if config.developer:
+        key "d" action Function(lambda: renpy.notify(f"{scenes[current_scene].get_state('dusted')}"))
+        key "s" action Function(lambda: renpy.notify(f"{scenes[current_scene].states}"))
+        key "m" action Function(lambda: renpy.notify(f"{mistake_inventory._inventory}"))
+        key "b" action Function(lambda: renpy.notify(f"{swabbing}"))
+        key "t" action Function(lambda: renpy.notify(f"{testing}"))
 
 
 
