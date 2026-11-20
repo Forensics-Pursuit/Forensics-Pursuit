@@ -175,11 +175,11 @@
         "currency": {
             "good": "Your continuing education is up to par. Continuing education credits, conferences, and journals are great to mention",
             "clarification": "Can you name any recent conferences or journals you have used to keep your knowledge up to date.",
-            "poor": "Your current knowledge needs updating. Consider conferences, journald and taking credits in continuing education"
+            "poor": "Your current knowledge needs updating. Consider conferences, journals and taking credits in continuing education"
         },
         "conflicts": {
             "good": "You have maintained objectivity. Detailing your lack of bias and interests maintains credibility",
-            "clarification": "Be sure to highlight that you have maintained objectivty and have no biases in your expertise",
+            "clarification": "Be sure to highlight that you have maintained objectivity and have no biases in your expertise",
             "poor": "Objectivity needs clarification. Emphasize no bias, interests or relationships"
         }
     }

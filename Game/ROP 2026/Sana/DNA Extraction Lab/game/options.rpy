@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("LabPrototype")
+define config.name = _("DNA Extraction Lab")
 
 define config.rollback_enabled = False
 

@@ -64,7 +64,7 @@ init -5 python:
             #Washes all DNA that is bound to spin column into tube. Not fully realistic but good enough. 
             curr_sample.has_AE = True
         else:
-            renpy.notify("You do not need buffer ATE at this stage!")
+            renpy.notify("You do not need Buffer ATE at this stage!")
 
     @requires_sample    
     def use_PBS():
@@ -73,7 +73,7 @@ init -5 python:
     @requires_sample
     def use_proteaseK():
         if curr_sample._decay_rate == 0:
-            renpy.notify("There are no more DNAses that need digesting!")
+            renpy.notify("There are no more DNases that need digesting!")
         if add_solvent(20):
             curr_sample.add_proteaseK()
 
@@ -401,7 +401,7 @@ screen choose_discard_type():
             spacing 15
             text "What would you like to discard?"
             textbutton "Tube" action Confirm("Are you certain you want to discard the tube and all its contents?", Function(discard_sample, curr_sample))
-            textbutton "Spin Column" action Confirm("Are you certain you wany to discard the spin column and everything attached to it?", Function(discard_spin_column, curr_sample))
+            textbutton "Spin Column" action Confirm("Are you certain you want to discard the spin column and everything attached to it?", Function(discard_spin_column, curr_sample))
             textbutton "Neither" action Hide("choose_discard_type")
 
 

@@ -2,7 +2,7 @@
     {
         "name": "No Photo Scene",
         "image_name": "toolbox-camera",
-        "description": "You forgot to take pictues before investigating. Your credibility is completely ruined!"
+        "description": "You forgot to take pictures before investigating. Your credibility is completely ruined!"
     },
     {
         "name": "No Gloves",
@@ -17,7 +17,7 @@
     {
         "name": "No Evidence Bag",
         "image_name": "toolbox-evidence_bag",
-        "description": "You forgot to bag and tape evidence. You might as well have sent the evidence over with pigeon carrier!"
+        "description": "You forgot to bag and tape evidence. You might as well have sent the evidence over by carrier pigeon!"
     },
     {
         "name": "Wrong Swab Type Wet",
@@ -52,7 +52,7 @@
     {
         "name": "Wrong Colour Dust",
         "image_name": "toolbox-white_granular_powder",
-        "description": "You used the wrong colour of powder. You might have more sucess collecting the print if you can actually see it!"
+        "description": "You used the wrong colour of powder. You might have more success collecting the print if you can actually see it!"
     },  
     {
         "name": "No Picture Dusted Fingerprint",
@@ -62,7 +62,7 @@
     {
         "name": "No Scale Bar",
         "image_name": "toolbox-scalebar",
-        "description": "You did not use a scalebar when collecting the fingerprint. Who needs chain of custody anyway?"
+        "description": "You did not use a scale bar when collecting the fingerprint. Who needs chain of custody anyway?"
     },  
     {
         "name": "No Picture Scale Bar",

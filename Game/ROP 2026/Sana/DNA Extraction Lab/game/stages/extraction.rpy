@@ -70,7 +70,7 @@ label start:
     s "All the tools needed for the extraction process are in your inventory."
     s "Using any given reagent automatically adds the amount called for within the lab procedure."
     s "You can swap between your sample tubes by interacting with them in the evidence tab."
-    s "Good luck with the extraction, and remember: theres no one to stop you from making mistakes!"
+    s "Good luck with the extraction, and remember: there's no one to stop you from making mistakes!"
     show nina write1 zorder -1000
     call screen inventory
 
@@ -95,17 +95,17 @@ label end:
         s "It seems that you did not properly remove protein impurities. Make sure that you use AW1 and centrifuge."
     
     if curr_sample.has_chaotropic_salts:
-        s "There is still significant amounts of chaotropic salts attached to the DNA. Don't forget to wash them of with AW2 next time!"
+        s "There are still significant amounts of chaotropic salts attached to the DNA. Don't forget to wash them off with AW2 next time!"
     
     if curr_sample._mass_DNA != 0:
-        s "You must lyse the blood cells if you want acess to the DNA. Other wise, everything else you do is useless!"
+        s "You must lyse the blood cells if you want access to the DNA. Otherwise, everything else you do is useless!"
     elif curr_sample._mass_DNA_bound != 0:
-        s "You've mostly done an amazing job collecting the DNA; however, you need to pull it off the spin column using buffer AE before we can use it!"
+        s "You've mostly done an amazing job collecting the DNA; however, you need to pull it off the spin column using Buffer ATE before we can use it!"
     elif curr_sample._mass_DNA_free < 100:
-        s "Your DNA conentration is significantly lower than expected. Make sure you are not diluting by adding too many buffers."
-        s "If thats not the case, make sure you proprely adhere the DNA to the spin column by uniformly mixing ethanol into the collected tube!"
+        s "Your DNA concentration is significantly lower than expected. Make sure you are not diluting by adding too many buffers."
+        s "If that's not the case, make sure you properly adhere the DNA to the spin column by uniformly mixing ethanol into the collected tube!"
     
-    s "This was a good try. Keep practicin the extraction procedure and you will master it in no time!"
+    s "This was a good try. Keep practicing the extraction procedure and you will master it in no time!"
     
    
 screen test():

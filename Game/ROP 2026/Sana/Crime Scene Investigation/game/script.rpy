@@ -53,8 +53,8 @@ label start:
     s "At least..."
     s normal1 "...Under normal circumstances."
 
-    s normal1 "Police recieved a call around 10 this morning reporting the sudden death of a patient, Mary Sullivan, aged 75."
-    s "Staff claim she was in good health during her morning check up and had no underlying health conditions."
+    s normal1 "Police received a call around 10 this morning reporting the sudden death of a patient, Mary Sullivan, aged 75."
+    s "Staff claim she was in good health during her morning checkup and had no underlying health conditions."
 
     s write "Mary was paid a visit by her daughter, Jane Sullivan, at around 9."
     s "Typically such a visit would be supervised."
@@ -93,9 +93,9 @@ label review_mistakes:
 
     scene outside_crime_scene
     show nina normal1 at right
-    s "All finished officer?"
+    s "All finished, Officer?"
     
-    s write "Lets see how you did!"
+    s write "Let's see how you did!"
 
     if len(mistake_inventory._inventory) == 0:
         s normal1 "Oh..."

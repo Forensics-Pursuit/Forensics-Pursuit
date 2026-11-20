@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Court Room Scene")
+define config.name = _("Courtroom")
 define config.developer = True
 
 

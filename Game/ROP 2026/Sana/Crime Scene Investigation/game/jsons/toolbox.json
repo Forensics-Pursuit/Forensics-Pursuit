@@ -42,7 +42,7 @@
         "action": "use_backing_card"
     },
     {
-        "name": "Scalebar",
+        "name": "Scale Bar",
         "image_name": "toolbox-scalebar",
         "usable": true,
         "action": "use_scalebar"
