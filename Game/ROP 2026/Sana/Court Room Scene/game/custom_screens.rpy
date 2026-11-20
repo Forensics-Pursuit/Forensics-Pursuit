@@ -187,7 +187,7 @@ screen specialty_exploration_screen(specialty):
     # Find the matching specialty data from JSON
     python:
         import json
-        file_path = renpy.loader.transfn("courtroom.json")
+        file_path = renpy.loader.transfn("jsons/courtroom.json")
         with open(file_path, "r") as f:
             specialties_data = json.load(f)
         

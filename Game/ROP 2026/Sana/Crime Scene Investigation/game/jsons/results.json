@@ -1,5 +1,5 @@
 {
-    "mistakes_file": "mistakes.json",
+    "mistakes_file": "jsons/mistakes.json",
     "steps": [
         {"evidence": "Blood Sample", "label": "collected the blood sample?"},
         {"evidence": "Angel Statue Fingerprint", "label": "lifted the statue fingerprint?"},

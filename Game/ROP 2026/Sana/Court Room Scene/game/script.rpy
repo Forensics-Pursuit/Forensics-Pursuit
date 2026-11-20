@@ -130,7 +130,7 @@ label specialty_menu:
         import json
         
         # Load the JSON data
-        file_path = renpy.loader.transfn("courtroom.json")
+        file_path = renpy.loader.transfn("jsons/courtroom.json")
         with open(file_path, "r") as f:
             specialties_data = json.load(f)
         

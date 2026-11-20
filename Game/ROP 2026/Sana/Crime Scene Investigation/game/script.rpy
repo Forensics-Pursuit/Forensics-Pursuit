@@ -7,18 +7,18 @@
 init python:
     import json
 
-    tools = load_items("toolbox.json") #Gets dictionary representing all tools contained in toolbox.json
+    tools = load_items("jsons/toolbox.json") #Gets dictionary representing all tools contained in toolbox.json
     for tool in tools: #Loops through all keys and displays tool to inventory
         toolbox.add_to_inventory(tools[tool])
 
     toolbox.delete_from_inventory(tools["Tape"])
     toolbox.delete_from_inventory(tools["Backing Card"])
     
-    evies = load_items("evidence.json")
+    evies = load_items("jsons/evidence.json")
 
     #This is the invenory that will hold mistakes as the player makes them.
     mistake_inventory = Inventory()
-    mistakes = load_items("mistakes.json")
+    mistakes = load_items("jsons/mistakes.json")
 
     #Line below is for testing
     #for mistake in mistakes: mistake_inventory.add_to_inventory(mistakes[mistake])

@@ -1,8 +1,8 @@
 init python:
     import json
 
-    tools = load_items("toolbox.json") #Gets dictionary representing all tools contained in toolbox.json
-    #samples = load_items("evidence.json")
+    tools = load_items("jsons/toolbox.json") #Gets dictionary representing all tools contained in toolbox.json
+    #samples = load_items("jsons/evidence.json")
     for tool in tools: #Loops through all keys and displays tool to inventory
         toolbox.add_to_inventory(tools[tool])
     

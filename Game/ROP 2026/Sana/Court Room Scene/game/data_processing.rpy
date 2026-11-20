@@ -95,7 +95,7 @@ init python:
 
 
     # Load courtroom data from JSON
-    file_path = renpy.loader.transfn("courtroom.json")
+    file_path = renpy.loader.transfn("jsons/courtroom.json")
     with open(file_path, "r") as f:
         courtroom_data = json.load(f)
 
