@@ -72,7 +72,7 @@ label lab_conclusion:
     scene bg_debrief with dissolve
     show nina thinknote1 at center with dissolve
     n "The forensic data is clear. The fingerprint minutiae from the outside handle and the DNA markers from the cabin lead to one person: [_robber_name], our Pontiac Bandit."
-    n "We have undeniable physical proof placing him inside that vehicle. I'm calling the District Attorney to get a felony arrest warrant signed."
+    n "We have undeniable physical proof placing the suspect inside that vehicle. I'm calling the District Attorney to get a felony arrest warrant signed."
     show nina normal1 at center
     n "Excellent protocol work today. The evidence is airtight. Case closed."
     hide nina with dissolve

@@ -238,7 +238,7 @@ label scene_wrap_up:
     n "Let us review the field documentation and collection sequence before transport:"
     show nina thinknote1 at right
     n "Scene Documentation: Photographic evidence of each item was captured in situ with an appropriate scale bar prior to handling."
-    n "Latent Fingerprints: Developed using physical developer, documented with a scale bar, lifted with tape, and secured on a high-contrast backing card."
+    n "Latent Fingerprints: Developed using magnetic powder, documented with a scale bar, lifted with tape, and secured on a high-contrast backing card."
     n "Biological Materials: Swabbed high-contact areas, focusing on the can rim for salivary epithelial cells to generate an STR profile."
     n "Chain of Custody: Chronological tracking log has been signed, ensuring a continuous, unbroken chain. The integrity of the physical evidence is intact."
     show nina normal1 at right

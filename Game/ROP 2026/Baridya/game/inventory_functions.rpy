@@ -165,7 +165,7 @@ init -10 python:
     def _can_whole_on_complete():
         evids = load_items("jsons/evidence.json")
         store.did_can = True
-        store.evidence.add_to_inventory(evids["Can bag"])
+        store.evidence.add_to_inventory(evids["Can Bag"])
         renpy.notify("Can collected and sealed.")
 
     def _wheel_print_on_complete():
@@ -186,7 +186,7 @@ init -10 python:
         steps=["Magnetic Powder", "Scalebar", "Tape", "Backing Card", "Evidence Bag", "Tamper Evident Tape"],
         step_messages={
             "Magnetic Powder": "Step 1/6: Powder applied.",
-            "Scalebar": "Step 2/6: Scalebar placed.",
+            "Scalebar": "Step 2/6: Scale bar placed.",
             "Tape": "Step 3/6: Print lifted.",
             "Backing Card": "Step 4/6: Backing card placed.",
         },
@@ -203,7 +203,7 @@ init -10 python:
         steps=["Magnetic Powder", "Scalebar", "Tape", "Backing Card", "Evidence Bag", "Tamper Evident Tape"],
         step_messages={
             "Magnetic Powder": "Powder applied to the can.",
-            "Scalebar": "Scalebar placed.",
+            "Scalebar": "Scale bar placed.",
             "Tape": "Print lifted.",
             "Backing Card": "Backing card placed.",
         },
@@ -241,7 +241,7 @@ init -10 python:
         steps=["Magnetic Powder", "Scalebar", "Tape", "Backing Card", "Evidence Bag", "Tamper Evident Tape"],
         step_messages={
             "Magnetic Powder": "Powder applied to the wheel.",
-            "Scalebar": "Scalebar placed.",
+            "Scalebar": "Scale bar placed.",
             "Tape": "Print lifted.",
             "Backing Card": "Backing card placed.",
         },

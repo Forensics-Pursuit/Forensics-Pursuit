@@ -175,7 +175,7 @@ init -5 python:
     def dna_check_tray_placements():
         global dna_tray_prepped
         if not (dna_tray_top_filled and dna_tray_bottom_filled and dna_tray_side_filled):
-            dna_notify_msg("Place all required components on the tray", correct=False)
+            dna_notify_msg("Place all required components on the tray.", correct=False)
             return
 
         correct = True
@@ -669,7 +669,7 @@ label dna_add_ethanol:
         pause 1.0
         scene add_ethanol_4
         pause 1.0
-        $ dna_notify_msg("Added 400uL of ethanol!", correct=True)
+        $ dna_notify_msg("Added 400µL of ethanol!", correct=True)
     jump dna_bio_station
 
 label dna_new_tube:
@@ -680,7 +680,7 @@ label dna_new_tube:
         pause 0.5
         scene new_tube_3
         pause 1.0
-        $ dna_notify_msg("Transferred to a new 2mL tube!", correct=True)
+        $ dna_notify_msg("Transferred to a new 2 mL tube!", correct=True)
         $ dna_tube_transfered = True
         $ dna_swab_tasks["swab_new_tube"] = True
     jump dna_bio_station

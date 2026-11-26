@@ -128,7 +128,7 @@ init -5 python:
             ],
         ),
         "print_1": AfisMCQ(
-            question="Classify the friction ridge pattern displayed below.",
+            question="Classify the friction ridge pattern displayed above.",
             choices=[("Arch", True), ("Whorl", False), ("Loop", False)],
             responses=[
                 ["That's an arch, the ridges rise in the middle with no backward turn.", "Let's finish the comparison."],
@@ -539,7 +539,7 @@ label afis_quiz:
 label afis_show_results:
     hide screen afis_quiz_images
     $ is_match, score = afis_prints[imported_print].scores[_db_key]
-    n "[score]%% consistency."
+    n "[score]% consistency."
 
     if is_match:
         $ lab_fingerprint_done = True
