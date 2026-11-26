@@ -1,0 +1,13 @@
+{
+    "mistakes_file": "jsons/mistakes.json",
+    "steps": [
+        {"evidence": "Blood Sample", "label": "collected the blood sample?"},
+        {"evidence": "Angel Statue Fingerprint", "label": "lifted the statue fingerprint?"},
+        {"evidence": "Angel Statue Fingerprint Photo", "label": "photographed the bloody print?"}
+    ],
+    "spots": [
+        {"id": "bedroom_main", "name": "Blood Pool", "image": "images/results/spot_blood_pool.png", "evidence": ["Blood Sample"]},
+        {"id": "angel_statues", "name": "Angel Statues", "image": "images/results/spot_angel_statues.png", "evidence": ["Angel Statue Fingerprint"]},
+        {"id": "angel_head", "name": "Angel Head", "image": "images/results/spot_angel_head.png", "evidence": ["Angel Statue Fingerprint Photo"]}
+    ]
+}

@@ -1,0 +1,201 @@
+init -5 python:
+    # The glove mechanic was removed on purpose. The reasoning and the old code are in notes.md.
+
+    import random
+
+    def results_default_spot():
+        """Mistakes are filed under the scene the player is in when they make them
+        (used by add_mistake in results.rpy; ids match "spots" in jsons/results.json).
+        """
+        return current_scene
+
+
+    #TODO I am pretty sure I can encapsulate the screen change logic with the Scene class itself. This would make the code a lot cleaner but 
+    #I highkey don't feel like doing all that
+    def use_camera():
+        #This ordering ensures that if anything has been done to manipulate scene the initial scene photorgraph can no longer be captured allowing for a critical failure.
+        if scenes[current_scene].get_state("scale_bar"): scenes[current_scene].set_state("scale_bar_photographed", True)
+        elif scenes[current_scene].get_state("dusted"): scenes[current_scene].set_state("dusted_photographed", True)
+        elif scenes[current_scene].get_state("enhanced"): 
+            scenes[current_scene].set_state("enhanced_photographed", True)
+            evidence.add_to_inventory(evies["Angel Statue Fingerprint Photo"])
+        else: scenes[current_scene].set_state("scene_photographed", True)
+
+        renpy.play("camera_flash.mp3")
+
+        #TODO Make the camera flash work with the new image map screens if you have the time
+        #renpy.show_screen(current_scene, at="camera_flash")
+
+    def use_hungarian_red():
+        if current_scene != "angel_head":
+            renpy.notify("There is nothing to enhance here!")
+        else:
+            scenes[current_scene].set_state("enhanced", True)
+            scenes[current_scene].background = "bg angel_head_enhanced"
+    
+    def collect_evidence():
+        if renpy.invoke_in_new_context(renpy.confirm, "Are you certain you would like to bag this item and submit it for testing?"):
+            if swabbing:
+                evidence.add_to_inventory(evies["Blood Sample"])
+
+                if not scenes[current_scene].get_state("presumptive_test_attempt"):
+                    add_mistake("No Presumptive Test")
+                elif scenes[current_scene].get_state("false_positive") and not scenes[current_scene].get_state("correct_presumptive_test"):
+                    add_mistake("False Positive Collected")
+                elif not scenes[current_scene].get_state("correct_presumptive_test"):
+                    add_mistake("Wrong Blood Test Order")
+                
+                if scenes[current_scene].get_state("test_swab_current"):
+                    add_mistake("Test Swab Collected")
+                
+                if not scenes[current_scene].get_state("right_swab"):
+                    add_mistake("Wrong Swab Type")
+
+
+
+                discard_swab()
+            else:
+                renpy.notify("You don't have anything to bag!")
+
+
+    #
+    #Fingerprinting Functions
+    #
+    def use_black_granular_powder():
+        if current_scene != "angel_statues":
+            renpy.notify("Click on the item that you want to dust first.")
+        elif scenes[current_scene].get_state("dusted"):
+            renpy.notify("You have already dusted this item")
+        else:
+            #No photo of scene taken before dusting.
+            if not scenes[current_scene].get_state('scene_photographed'):
+                add_mistake("No Photo Scene")
+
+            scenes[current_scene].set_state("dusted", True)
+            scenes[current_scene].set_state("right_dust", True)
+
+            scenes[current_scene].background = "bg angel_statues_dusted_black"
+            scenes["bedroom_main"].background = "bg bedroom_statue_black"
+    
+    def use_white_granular_powder():
+        if current_scene != "angel_statues":
+            renpy.notify("Click on the item that you want to dust first.")
+        elif scenes[current_scene].get_state("dusted"):
+            renpy.notify("You have already dusted this item")
+        else:
+            if not scenes[current_scene].get_state('scene_photographed'):
+                add_mistake("No Photo Scene")
+
+            scenes[current_scene].set_state("dusted", True)
+            add_mistake("Wrong Colour Dust")
+
+            scenes[current_scene].background = "bg angel_statues_dusted_white"
+            scenes["bedroom_main"].background = "bg bedroom_statue_white"
+
+    
+    def use_scalebar():
+        if not scenes[current_scene].get_state("right_dust") or scenes[current_scene].get_state("lifted"):
+            renpy.notify("Do you see any fingerprints to scale?")
+        else:
+            if not scenes[current_scene].get_state('dusted_photographed'):
+                add_mistake("No Picture Dusted Fingerprint")
+
+            scenes[current_scene].set_state("scale_bar")
+
+            scenes[current_scene].background = "bg angel_statues_dusted_black_scale"
+            scenes["bedroom_main"].background = "bg bedroom_statue_black_scale"
+
+    def use_tape():
+        if not scenes[current_scene].get_state("dusted"):
+            renpy.notify("There is nothing for the tape to pick up!")
+        elif not scenes[current_scene].get_state("right_dust"):
+            renpy.notify("Do you see a fingerprint anywhere?")
+        elif scenes[current_scene].get_state("lifted"):
+            renpy.notify("You have already collected this fingerprint as evidence!")
+        else:
+            #We do not want to give the no photo scalebar error if they did not use one at all
+            if not scenes[current_scene].get_state("scale_bar"):
+                add_mistake("No Scale Bar")
+            elif not scenes[current_scene].get_state("scale_bar_photographed"):
+                add_mistake("No Picture Scale Bar")
+
+            scenes[current_scene].set_state("lifted")
+
+            scenes[current_scene].background = "bg angel_statues_lifted"
+            scenes["bedroom_main"].background = "bg bedroom_statue_black_lifted"
+    
+    def use_backing_card():
+        #This is where we add stuff to our inventories. We add things to the evidence and mistake inventories here. 
+        if scenes[current_scene].get_state("lifted"): evidence.add_to_inventory(evies["Angel Statue Fingerprint"])
+
+        
+    def use_backing_card_and_tape():
+        use_tape()
+        use_backing_card()
+    
+    #
+    #Blood Sample Collection Functions
+    #
+    def use_swab_pack():
+        global default_mouse
+        global swabbing
+        right = renpy.invoke_in_new_context(renpy.display_menu, [("Wet Swab", True), ("Dry Swab", False)])
+        scenes[current_scene].set_state("right_swab", right)
+        default_mouse = "clean swab"
+        swabbing = True
+
+    def swab_something():
+        global default_mouse
+        if not scenes[current_scene].get_state("scene_photographed"):
+            add_mistake("No Photo Scene")
+
+        scenes[current_scene].set_state("swabbed", True)
+        default_mouse = "red swab"
+    
+    def discard_swab():
+        global default_mouse
+        global swabbing
+        default_mouse = "default"
+        swabbing = False
+        scenes[current_scene].set_state("test_swab_current", False)
+        scenes[current_scene].set_state("right_swab", False)
+
+    def begin_Kastle_Meyer():
+        global testing
+
+        if not swabbing:
+            renpy.notify("You need a swab to test!")
+        else:
+            testing = True
+    
+    def add_reagent(attempt_list, reagent):
+        attempt_list.append(reagent)
+        check_Kastle_Meyer(attempt_list)
+    
+    def check_Kastle_Meyer(added: List[str]) -> None:
+        global default_mouse
+        print(added)
+
+        if added == ['e','p','h'] and not default_mouse == "pink swab":
+            scenes[current_scene].set_state("correct_presumptive_test", True)
+            default_mouse = "pink swab"
+        elif added == ['e','p']:
+            #False positive case:
+            if random.randint(1,7) == 1:
+                scenes[current_scene].set_state("false_positive", True)
+                default_mouse = "pink swab"
+        elif len(added) >= 1:
+            scenes[current_scene].set_state("presumptive_test_attempt", True)
+            scenes[current_scene].set_state("test_swab_current", True)
+    
+    #This function is necesarry as calling a function as an Action by default updates screens which is needed to clos presumptive_testing
+    def stop_test():
+        global testing
+        testing = False
+    
+transform camera_flash:
+    matrixcolor TintMatrix("#ffffff") * BrightnessMatrix(0)
+    linear 0.0 matrixcolor TintMatrix("#ccccff") * BrightnessMatrix(1)
+    linear 0.4 matrixcolor TintMatrix("#ffffff") * BrightnessMatrix(0)
+
+ 
